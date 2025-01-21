@@ -8,8 +8,12 @@ INSERT INTO Countries (country_name, p_country_code) VALUES
 ('Australia', '+61'),
 ('Brazil', '+55'),
 ('Japan', '+81'),
-('South Korea', '+82');
-
+('South Korea', '+82'),
+('Mexico', '+52'),
+('Italy', '+39'),
+('Spain', '+34'),
+('Russia', '+7'),
+('South Africa', '+27');
 
 INSERT INTO Cities (city_name, country_id) VALUES
 ('New Delhi', 1),
@@ -24,14 +28,47 @@ INSERT INTO Cities (city_name, country_id) VALUES
 ('Chandigarh', 1),
 ('New York', 2),
 ('Los Angeles', 2),
+('Chicago', 2),
+('San Francisco', 2),
 ('Berlin', 3),
+('Munich', 3),
+('Hamburg', 3),
 ('Paris', 4),
+('Lyon', 4),
+('Marseille', 4),
 ('London', 5),
+('Manchester', 5),
+('Birmingham', 5),
 ('Toronto', 6),
+('Vancouver', 6),
+('Montreal', 6),
 ('Sydney', 7),
+('Melbourne', 7),
+('Brisbane', 7),
 ('Rio de Janeiro', 8),
+('São Paulo', 8),
+('Brasília', 8),
 ('Tokyo', 9),
-('Seoul', 10);
+('Osaka', 9),
+('Kyoto', 9),
+('Seoul', 10),
+('Busan', 10),
+('Incheon', 10),
+('Mexico City', 11),
+('Guadalajara', 11),
+('Monterrey', 11),
+('Rome', 12),
+('Milan', 12),
+('Naples', 12),
+('Madrid', 13),
+('Barcelona', 13),
+('Seville', 13),
+('Moscow', 14),
+('Saint Petersburg', 14),
+('Novosibirsk', 14),
+('Cape Town', 15),
+('Johannesburg', 15),
+('Durban', 15);
 
 INSERT INTO Airports (airport_name, city_id, country_id, airport_code) VALUES
 ('Indira Gandhi International Airport', 1, 1, 'DEL'),
@@ -53,21 +90,31 @@ INSERT INTO Airports (airport_name, city_id, country_id, airport_code) VALUES
 ('Sydney Kingsford Smith Airport', 17, 7, 'SYD'),
 ('Rio de Janeiro–Galeão International Airport', 18, 8, 'GIG'),
 ('Narita International Airport', 19, 9, 'NRT'),
-('Incheon International Airport', 20, 10, 'ICN');
-
+('Incheon International Airport', 20, 10, 'ICN'),
+('Mexico City International Airport', 21, 11, 'MEX'),
+('Rome Fiumicino Airport', 22, 12, 'FCO'),
+('Barcelona El Prat Airport', 23, 13, 'BCN'),
+('Sheremetyevo International Airport', 24, 14, 'SVO'),
+('Cape Town International Airport', 25, 15, 'CPT');
 
 INSERT INTO Airlines (airline_name, airline_code, country_of_origin, contact_number, email, website) VALUES
-('Air India', 'AI', 'India', '1800-180-1407', 'customercare@airindia.in', 'http://www.airindia.in'),
-('Delta Airlines', 'DL', 'United States', '800-221-1212', 'help@delta.com', 'http://www.delta.com'),
-('Lufthansa', 'LH', 'Germany', '0180 6 747 747', 'info@lufthansa.com', 'http://www.lufthansa.com'),
-('Air France', 'AF', 'France', '3654', 'contact@airfrance.com', 'http://www.airfrance.com'),
-('British Airways', 'BA', 'United Kingdom', '0344 493 0787', 'customer.relations@ba.com', 'http://www.britishairways.com'),
-('Air Canada', 'AC', 'Canada', '1-888-247-2262', 'info@aircanada.ca', 'http://www.aircanada.com'),
-('Qantas', 'QF', 'Australia', '13 13 13', 'customer.relations@qantas.com.au', 'http://www.qantas.com'),
-('LATAM Airlines', 'LA', 'Brazil', '0800-123-200', 'support@latam.com', 'http://www.latam.com'),
-('Japan Airlines', 'JL', 'Japan', '03-5757-1111', 'contact@jal.com', 'http://www.jal.com'),
-('Korean Air', 'KE', 'South Korea', '02-2656-2001', 'koreanair@koreanair.com', 'http://www.koreanair.com');
+('Air India', 'AI', 'India', '+91 11 2561 4747', 'contact@airindia.in', 'www.airindia.in'),
+('American Airlines', 'AA', 'United States', '+1 800-433-7300', 'customerservice@aa.com', 'www.aa.com'),
+('Lufthansa', 'LH', 'Germany', '+49 800 983 0800', 'service@lufthansa.com', 'www.lufthansa.com'),
+('Air France', 'AF', 'France', '+33 9 69 39 36 54', 'contact@airfrance.com', 'www.airfrance.com'),
+('British Airways', 'BA', 'United Kingdom', '+44 344 493 0787', 'contact@britishairways.com', 'www.britishairways.com'),
+('Air Canada', 'AC', 'Canada', '+1 888-247-2262', 'info@aircanada.ca', 'www.aircanada.com'),
+('Qantas', 'QF', 'Australia', '+61 13 13 13', 'contact@qantas.com.au', 'www.qantas.com.au'),
+('LATAM Airlines', 'LA', 'Brazil', '+55 11 4002-5700', 'service@latam.com', 'www.latam.com'),
+('Japan Airlines', 'JL', 'Japan', '+81 3 5757 5601', 'contact@jal.com', 'www.jal.com'),
+('Korean Air', 'KE', 'South Korea', '+82 2 2669 2020', 'support@koreanair.com', 'www.koreanair.com'),
+('Aeromexico', 'AM', 'Mexico', '+52 55 5133 4000', 'clientes@aeromexico.com', 'www.aeromexico.com'),
+('Alitalia', 'AZ', 'Italy', '+39 06 65649', 'contact@alitalia.com', 'www.alitalia.com'),
+('Iberia', 'IB', 'Spain', '+34 900 111 500', 'clientes@iberia.com', 'www.iberia.com'),
+('Aeroflot', 'SU', 'Russia', '+7 495 223 5555', 'info@aeroflot.ru', 'www.aeroflot.ru'),
+('South African Airways', 'SA', 'South Africa', '+27 11 978 5000', 'info@flysaa.com', 'www.flysaa.com');
 
+-- Recheck payment types
 INSERT INTO PaymentType (pm_type) VALUES
 ('Credit Card'),
 ('Debit Card'),
@@ -80,7 +127,7 @@ INSERT INTO PaymentType (pm_type) VALUES
 ('Google Pay'),
 ('Samsung Pay');
 
-
+-- Recheck class types
 INSERT INTO ClassType (class_name) VALUES
 ('Economy'),
 ('Business'),
@@ -93,7 +140,7 @@ INSERT INTO ClassType (class_name) VALUES
 ('Luxury Class'),
 ('Economy Lite');
 
-
+-- Will add country code here
 INSERT INTO PII (identifier_type) VALUES
 ('Aadhar Card'),
 ('Driver’s License'),
@@ -116,33 +163,34 @@ INSERT INTO Passengers (first_name, last_name, dob, email, p_country_code, phone
 ('Akira', 'Yamamoto', '1992-09-08', 'akira.yamamoto@email.com', 'JP', '8881234567', 7, 'JP123456789'),
 ('Jin', 'Park', '1993-12-17', 'jin.park@email.com', 'KR', '6665554444', 8, 'KR1234567890'),
 ('Ravi', 'Kumar', '1988-10-30', 'ravi.kumar@email.com', 'IN', '8001234567', 9, 'A1234567890'),
-('Emily', 'Taylor', '1994-01-05', 'emily.taylor@email.com', 'CA', '5551239876', 10, 'CAN123456789');
-
+('Emily', 'Taylor', '1994-01-05', 'emily.taylor@email.com', 'CA', '5551239876', 10, 'CAN123456789'),
+('Sophia', 'Martinez', '1990-12-14', 'sophia.martinez@email.com', 'US', '1231231234', 1, '1234 5678 4321'),
+('Ethan', 'Wang', '1992-05-11', 'ethan.wang@email.com', 'CA', '5552345678', 2, 'D9876543'),
+('Olivia', 'Taylor', '1986-03-25', 'olivia.taylor@email.com', 'UK', '7772345678', 3, 'GB876543210'),
+('Liam', 'Chen', '1993-07-18', 'liam.chen@email.com', 'AU', '8889876543', 4, 'AU987654321'),
+('Amelia', 'Nguyen', '1985-10-20', 'amelia.nguyen@email.com', 'IN', '9898765432', 5, 'IN1234567890'),
+('Lucas', 'Singh', '1989-06-05', 'lucas.singh@email.com', 'IN', '9776543210', 6, 'IN5678901234'),
+('Ella', 'Hernandez', '1991-09-15', 'ella.hernandez@email.com', 'BR', '9771234567', 7, 'BR876543210'),
+('Mason', 'Davis', '1994-01-03', 'mason.davis@email.com', 'US', '5559876543', 8, 'US987654321'),
+('Charlotte', 'Gonzalez', '1988-11-22', 'charlotte.gonzalez@email.com', 'CA', '9987654321', 9, 'CAN1234567890'),
+('Amos', 'Jackson', '1990-02-02', 'amos.jackson@email.com', 'GB', '6668889999', 10, 'GB987654321');
 
 INSERT INTO Flights (flight_number, departure_airport_id, arrival_airport_id, departure_time, arrival_time, flight_status, airline_id) VALUES
-(101, 1, 2, '2025-03-10 10:00:00', '2025-03-10 12:30:00', 'Active', 1),
-(102, 2, 3, '2025-03-11 15:00:00', '2025-03-11 17:00:00', 'Active', 2),
-(103, 3, 4, '2025-03-12 08:00:00', '2025-03-12 10:00:00', 'Cancelled', 3),
-(104, 4, 5, '2025-03-13 13:30:00', '2025-03-13 16:00:00', 'Active', 4),
-(105, 5, 6, '2025-03-14 06:00:00', '2025-03-14 09:00:00', 'Active', 5),
-(106, 6, 7, '2025-03-15 11:00:00', '2025-03-15 13:30:00', 'Active', 6),
-(107, 7, 8, '2025-03-16 09:00:00', '2025-03-16 11:30:00', 'Cancelled', 7),
-(108, 8, 9, '2025-03-17 14:30:00', '2025-03-17 17:00:00', 'Active', 8),
-(109, 9, 10, '2025-03-18 17:00:00', '2025-03-18 19:30:00', 'Active', 9),
-(110, 10, 1, '2025-03-19 20:00:00', '2025-03-19 22:30:00', 'Active', 10);
-
-INSERT INTO Bookings (booking_creator_id, booking_date, ticket_type, total_amount, booking_status, cancellation_date) VALUES
-(1, '2025-03-10', 1, 5000, 'Active', NULL),
-(2, '2025-03-11', 2, 10000, 'Cancelled', '2025-03-12'),
-(3, '2025-03-12', 3, 15000, 'Active', NULL),
-(4, '2025-03-13', 1, 3000, 'Active', NULL),
-(5, '2025-03-14', 2, 12000, 'Active', NULL),
-(6, '2025-03-15', 1, 5500, 'Cancelled', '2025-03-16'),
-(7, '2025-03-16', 3, 20000, 'Active', NULL),
-(8, '2025-03-17', 2, 8000, 'Active', NULL),
-(9, '2025-03-18', 1, 4500, 'Active', NULL),
-(10, '2025-03-19', 3, 18000, 'Cancelled', '2025-03-20');
-
+('AI202', 1, 11, '2025-01-22 22:30:00', '2025-01-23 06:30:00', 'Scheduled', 1),
+('AA300', 11, 1, '2025-01-22 20:00:00', '2025-01-23 22:00:00', 'Scheduled', 2),
+('LH401', 13, 1, '2025-01-22 15:00:00', '2025-01-23 23:30:00', 'Scheduled', 3),
+('AF100', 14, 1, '2025-01-22 18:00:00', '2025-01-23 04:00:00', 'Scheduled', 4),
+('BA200', 15, 1, '2025-01-22 19:30:00', '2025-01-23 05:00:00', 'Scheduled', 5),
+('AC301', 16, 1, '2025-01-22 16:00:00', '2025-01-23 01:30:00', 'Scheduled', 6),
+('QF400', 17, 1, '2025-01-22 17:30:00', '2025-01-23 09:30:00', 'Scheduled', 7),
+('LA500', 18, 1, '2025-01-22 14:00:00', '2025-01-23 23:00:00', 'Scheduled', 8),
+('JL600', 19, 1, '2025-01-22 21:00:00', '2025-01-23 07:30:00', 'Scheduled', 9),
+('KE700', 20, 1, '2025-01-22 16:30:00', '2025-01-23 04:00:00', 'Scheduled', 10),
+('AM800', 21, 1, '2025-01-22 18:45:00', '2025-01-23 14:00:00', 'Scheduled', 11),
+('AZ900', 22, 1, '2025-01-22 20:00:00', '2025-01-23 05:15:00', 'Scheduled', 12),
+('IB1000', 23, 1, '2025-01-22 19:00:00', '2025-01-23 08:30:00', 'Scheduled', 13),
+('SU1100', 24, 1, '2025-01-22 21:30:00', '2025-01-23 06:30:00', 'Scheduled', 14),
+('SA1200', 25, 1, '2025-01-22 23:30:00', '2025-01-23 09:30:00', 'Scheduled', 15);
 
 INSERT INTO FamilyMembers (booking_id, passenger_id) VALUES
 (1, 1),
@@ -154,7 +202,17 @@ INSERT INTO FamilyMembers (booking_id, passenger_id) VALUES
 (4, 7),
 (4, 8),
 (5, 9),
-(5, 10);
+(5, 10),
+(11, 11),
+(11, 12),
+(12, 13),
+(12, 14),
+(13, 15),
+(13, 16),
+(14, 17),
+(14, 18),
+(15, 19),
+(15, 20);
 
 INSERT INTO TicketSeats (booking_id, seat_number, seat_type, price) VALUES
 (1, 'A1', 1, 5000),
@@ -166,7 +224,17 @@ INSERT INTO TicketSeats (booking_id, seat_number, seat_type, price) VALUES
 (7, 'G1', 3, 20000),
 (8, 'H1', 2, 8000),
 (9, 'I1', 1, 4500),
-(10, 'J1', 3, 18000);
+(10, 'J1', 3, 18000),
+(11, 'A2', 2, 7000),
+(12, 'B2', 1, 12000),
+(13, 'C2', 3, 15000),
+(14, 'D2', 1, 3500),
+(15, 'E2', 2, 18000),
+(16, 'F2', 1, 22000),
+(17, 'G2', 3, 9000),
+(18, 'H2', 2, 14000),
+(19, 'I2', 1, 5500),
+(20, 'J2', 3, 11000);
 
 INSERT INTO Payments (booking_id, payment_date, payment_amount, pm_id, payment_status) VALUES
 (1, '2025-03-10', 5000, 1, 'Failed'),
@@ -178,8 +246,17 @@ INSERT INTO Payments (booking_id, payment_date, payment_amount, pm_id, payment_s
 (4, '2025-03-16', 3000, 6, 'Success'),
 (5, '2025-03-17', 12000, 4, 'Failed'),
 (5, '2025-03-18', 12000, 7, 'Failed'),
-(5, '2025-03-19', 12000, 8, 'Success');
-
+(5, '2025-03-19', 12000, 8, 'Success'),
+(11, '2025-03-20', 7000, 1, 'Failed'),
+(12, '2025-03-21', 12000, 3, 'Success'),
+(13, '2025-03-22', 15000, 2, 'Success'),
+(14, '2025-03-23', 3500, 5, 'Failed'),
+(15, '2025-03-24', 18000, 4, 'Success'),
+(16, '2025-03-25', 22000, 7, 'Failed'),
+(17, '2025-03-26', 9000, 6, 'Success'),
+(18, '2025-03-27', 14000, 8, 'Success'),
+(19, '2025-03-28', 5500, 9, 'Failed'),
+(20, '2025-03-29', 11000, 10, 'Success');
 
 INSERT INTO Baggage (booking_id, baggage_weight, baggage_type, checked_in, baggage_status) VALUES
 (1, 25, 'Carry-on', 1, 'In Transit'),
@@ -191,4 +268,14 @@ INSERT INTO Baggage (booking_id, baggage_weight, baggage_type, checked_in, bagga
 (7, 50, 'Checked', 1, 'Delivered'),
 (8, 12, 'Carry-on', 1, 'In Transit'),
 (9, 15, 'Checked', 1, 'Lost'),
-(10, 20, 'Carry-on', 0, 'Delivered');
+(10, 20, 'Carry-on', 0, 'Delivered'),
+(11, 18, 'Carry-on', 1, 'Delivered'),
+(12, 25, 'Checked', 1, 'Lost'),
+(13, 28, 'Checked', 0, 'In Transit'),
+(14, 30, 'Carry-on', 1, 'In Transit'),
+(15, 40, 'Checked', 1, 'Delivered'),
+(16, 12, 'Carry-on', 0, 'Lost'),
+(17, 20, 'Checked', 1, 'Delivered'),
+(18, 15, 'Carry-on', 0, 'In Transit'),
+(19, 23, 'Checked', 1, 'Delivered'),
+(20, 18, 'Carry-on', 0, 'Lost');
