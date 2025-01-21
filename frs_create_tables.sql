@@ -21,13 +21,13 @@ CREATE TABLE Airlines(
     website TEXT NULL
 );
 
--- Credit Card, Debit Card, Net Banking, UPI
+-- Credit Card, Debit Card, Net Banking, UPI, etc.
 CREATE TABLE PaymentType(
     pm_id INTEGER PRIMARY KEY AUTOINCREMENT,
     pm_type TEXT NOT NULL
 );
 
--- Economy, Business, First
+-- Economy, Business, First, etc.
 CREATE TABLE ClassType(
     class_id INTEGER PRIMARY KEY AUTOINCREMENT,
     class_name TEXT
@@ -36,9 +36,10 @@ CREATE TABLE ClassType(
 -- Aadhar Card (India), Driver’s License (USA), National Identity Card(EU), National ID Card(UK), CPF(Brazil) 
 CREATE TABLE PII(
     identifier_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    identifier_type TEXT
+    identifier_type TEXT NOT NULL,
+    country_id INTEGER,
+    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
-
 
 CREATE TABLE Airports(
     airport_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +71,7 @@ CREATE TABLE Flights(
     arrival_airport_id INTEGER,
     departure_time TEXT NOT NULL,
     arrival_time TEXT NOT NULL,
-    flight_status TEXT CHECK(flight_status IN ('Active', 'Cancelled')),
+    flight_status TEXT CHECK(flight_status IN ('Scheduled', 'Delayed', 'Cancelled')),
     airline_id INTEGER,
     FOREIGN KEY (departure_airport_id) REFERENCES Airports(airport_id),
     FOREIGN KEY (arrival_airport_id) REFERENCES Airports(airport_id),
