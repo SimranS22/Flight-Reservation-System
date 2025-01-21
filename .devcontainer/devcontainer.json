@@ -1,0 +1,9 @@
+{
+    "name": "SQLite3 Setup",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install sqlite3 -y",
+    "customizations": {
+      "vscode": {
+        "extensions": ["alexcvzz.vscode-sqlite"]
+      }
+    }
+  }
