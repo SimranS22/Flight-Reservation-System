@@ -18,10 +18,12 @@ CREATE TABLE Airlines(
     airline_id INTEGER PRIMARY KEY AUTOINCREMENT,
     airline_name TEXT NOT NULL,
     airline_code TEXT NOT NULL UNIQUE,
-    country_of_origin TEXT NOT NULL,
+    p_country_code TEXT NOT NULL UNIQUE,
     contact_number TEXT NULL,
     email TEXT NULL,
-    website TEXT NULL
+    website TEXT NULL,
+    country_id INTEGER,
+    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
 -- 4. ClassType
@@ -91,11 +93,12 @@ CREATE TABLE Bookings(
     booking_date TEXT NOT NULL, 
     ticket_type INTEGER NOT NULL, 
     total_amount REAL NOT NULL, 
-    booking_status TEXT CHECK(booking_status IN ('Active', 'Cancelled')) NOT NULL,
+    booking_status TEXT CHECK(booking_status IN ('Active', 'Cancelled')) NOT NULL DEFAULT 'Active',
     cancellation_date TEXT NULL,
     FOREIGN KEY (booking_creator_id) REFERENCES Passengers(passenger_id),
     FOREIGN KEY (ticket_type) REFERENCES ClassType(class_id)
 );
+
 
 -- 11. FamilyMembers
 CREATE TABLE FamilyMembers(
@@ -107,14 +110,14 @@ CREATE TABLE FamilyMembers(
 );
 
 -- 12. TicketSeats
-CREATE TABLE TicketSeats(
+CREATE TABLE TicketSeats (
     ticket_seat_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER,
     seat_number TEXT, 
-    seat_type INTEGER, 
+    class_id INTEGER,
     price REAL,
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
-    FOREIGN KEY (seat_type) REFERENCES ClassType(class_id)
+    FOREIGN KEY (class_id) REFERENCES ClassType(class_id)
 );
 
 -- 13. Payments
@@ -124,7 +127,7 @@ CREATE TABLE Payments(
     payment_date TEXT NOT NULL, 
     payment_amount REAL, 
     pm_id INTEGER, 
-    payment_status TEXT CHECK(payment_status IN ('Success', 'Failed')),
+    payment_status TEXT CHECK(payment_status IN ('Success', 'Failed')) DEFAULT 'Pending',
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
     FOREIGN KEY (pm_id) REFERENCES PaymentType(pm_id)
 );
@@ -141,7 +144,7 @@ CREATE TABLE Baggage (
 );
 
 -- 15. FlightBoarding
-CREATE TABLE FlightBoarding (
+CREATE TABLE PassengerFlightBoarding (
     flight_id INTEGER,
     passenger_id INTEGER,
     boarded BOOLEAN DEFAULT FALSE,
@@ -154,9 +157,32 @@ CREATE TABLE FlightBoarding (
 CREATE TABLE AirlineCrew (
     crew_id INTEGER PRIMARY KEY AUTOINCREMENT,
     airline_id INTEGER,
-    crew_role TEXT,
+    crew_role_id INTEGER,
     first_name TEXT,
     last_name TEXT,
-    FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id)
+    birthdate DATE,
+    hire_date DATE,
+    gender TEXT,
+    p_country_code TEXT NOT NULL UNIQUE,
+    contact_phone TEXT,
+    email TEXT,
+    FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id) ON DELETE CASCADE,
+    FOREIGN KEY (crew_role_id) REFERENCES CrewRoles(role_id)
+);
+
+--  17. CrewRoles
+CREATE TABLE CrewRoles (
+    role_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_name TEXT UNIQUE NOT NULL
+);
+
+-- 18. CrewFlightBoarding
+CREATE TABLE CrewFlightBoarding (
+    flight_id INTEGER,
+    crew_id INTEGER,
+    boarded BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (flight_id) REFERENCES Flights(flight_id),
+    FOREIGN KEY (crew_id) REFERENCES AirlineCrew(crew_id),
+    PRIMARY KEY (flight_id, crew_id)
 );
 
