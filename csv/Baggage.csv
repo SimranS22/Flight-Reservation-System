@@ -1,4 +1,3 @@
-baggage_id|booking_id|baggage_weight|baggage_type|checked_in|baggage_status
 1|1|15.0|1|TRUE|Checked
 2|2|20.0|2|FALSE|Checked
 3|3|10.0|3|TRUE|Not Checked

@@ -1,4 +1,3 @@
-ticket_seat_id|booking_id|seat_number|class_id|price
 1|1|A1|1|500.00
 2|1|A2|1|500.00
 3|2|B1|2|800.00

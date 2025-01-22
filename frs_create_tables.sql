@@ -60,7 +60,7 @@ CREATE TABLE Airlines(
     airline_id INTEGER PRIMARY KEY AUTOINCREMENT,
     airline_name TEXT NOT NULL,
     airline_code TEXT NOT NULL UNIQUE,
-    phone_country_code TEXT NOT NULL UNIQUE,
+    phone_country_code TEXT NOT NULL,
     contact_number TEXT NULL,
     email TEXT NULL,
     website TEXT NULL,
