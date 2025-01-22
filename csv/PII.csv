@@ -1,11 +1,11 @@
-identifier_id,identifier_type,country_id
-1,Driver's License,1
-2,Aadhar Card,2
-3,National ID,3
-4,Driver's License,4
-5,Social Security Number,5
-6,National ID,6
-7,Driver's License,7
-8,National ID,8
-9,CPF,9
-10,Passport,10
+identifier_id|identifier_type|country_id
+1|Driver's License|1
+2|Aadhar Card|2
+3|National ID|3
+4|Driver's License|4
+5|Social Security Number|5
+6|National ID|6
+7|Driver's License|7
+8|National ID|8
+9|CPF|9
+10|Passport|10

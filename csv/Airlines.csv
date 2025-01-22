@@ -1,11 +1,11 @@
-airline_id,airline_name,airline_code,phone_country_code,contact_number,email,website,country_id
-1,Delta Airlines,DAL,+1,1800-221-1212,contact@delta.com,www.delta.com,1
-2,Air India,AI,+91,1800-180-1407,contact@airindia.com,www.airindia.com,2
-3,British Airways,BA,+44,0344-493-0787,contact@britishairways.com,www.britishairways.com,3
-4,Qantas Airways,QF,+61,13-13-13,contact@qantas.com.au,www.qantas.com.au,4
-5,Air France,AF,+33,3654,contact@airfrance.com,www.airfrance.com,5
-6,Lufthansa,LH,+49,069-867-9800,contact@lufthansa.com,www.lufthansa.com,6
-7,WestJet,WS,+1,888-937-8538,contact@westjet.com,www.westjet.com,7
-8,Japan Airlines,JL,+81,0120-25-5959,contact@jal.com,www.jal.com,8
-9,Emirates,EK,+971,600-555-555,contact@emirates.com,www.emirates.com,9
-10,China Southern Airlines,CZ,+86,400-869-5539,contact@csair.com,www.csair.com,10
+airline_id|airline_name|airline_code|phone_country_code|contact_number|email|website|country_id
+1|Delta Airlines|DAL|+1|1800-221-1212|contact@delta.com|www.delta.com|1
+2|Air India|AI|+91|1800-180-1407|contact@airindia.com|www.airindia.com|2
+3|British Airways|BA|+44|0344-493-0787|contact@britishairways.com|www.britishairways.com|3
+4|Qantas Airways|QF|+61|13-13-13|contact@qantas.com.au|www.qantas.com.au|4
+5|Air France|AF|+33|3654|contact@airfrance.com|www.airfrance.com|5
+6|Lufthansa|LH|+49|069-867-9800|contact@lufthansa.com|www.lufthansa.com|6
+7|WestJet|WS|+1|888-937-8538|contact@westjet.com|www.westjet.com|7
+8|Japan Airlines|JL|+81|0120-25-5959|contact@jal.com|www.jal.com|8
+9|Emirates|EK|+971|600-555-555|contact@emirates.com|www.emirates.com|9
+10|China Southern Airlines|CZ|+86|400-869-5539|contact@csair.com|www.csair.com|10

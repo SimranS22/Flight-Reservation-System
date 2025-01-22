@@ -9,7 +9,7 @@ CREATE TABLE Currencies (
 CREATE TABLE Countries(
     country_id INTEGER PRIMARY KEY AUTOINCREMENT,
     country_name TEXT NOT NULL UNIQUE,
-    phone_country_code TEXT NOT NULL UNIQUE
+    phone_country_code TEXT NOT NULL
 );
 
 -- 2. Cities
@@ -81,6 +81,7 @@ CREATE TABLE Passengers(
     passenger_id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT NOT NULL,
     last_name TEXT NULL,
+    gender TEXT,
     dob DATE NOT NULL,    
     email TEXT NULL,
     phone_country_code TEXT NOT NULL,

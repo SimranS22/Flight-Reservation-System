@@ -1,6 +1,6 @@
-currency_id,currency_code,currency_name
-1,USD,US Dollar
-2,INR,Indian Rupee
-3,EUR,Euro
-4,GBP,British Pound
-5,AUD,AUD Dollar
+currency_id|currency_code|currency_name
+1|USD|US Dollar
+2|INR|Indian Rupee
+3|EUR|Euro
+4|GBP|British Pound
+5|AUD|AUD Dollar

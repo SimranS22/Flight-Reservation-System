@@ -1,6 +1,6 @@
-baggage_type_id,baggage_type_name
-1,Carry-On
-2,Checked
-3,Overweight
-4,Fragile
-5,Excess
+baggage_type_id|baggage_type_name
+1|Carry-On
+2|Checked
+3|Overweight
+4|Fragile
+5|Excess

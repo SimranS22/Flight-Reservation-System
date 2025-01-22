@@ -1,11 +1,11 @@
-country_id,country_name,phone_country_code
-1,United States,+1
-2,India,+91
-3,United Kingdom,+44
-4,Australia,+61
-5,France,+33
-6,Germany,+49
-7,Canada,+1
-8,Japan,+81
-9,Brazil,+55
-10,China,+86
+country_id|country_name|phone_country_code
+1|United States|+1
+2|India|+91
+3|United Kingdom|+44
+4|Australia|+61
+5|France|+33
+6|Germany|+49
+7|Canada|+1
+8|Japan|+81
+9|Brazil|+55
+10|China|+86

@@ -7,10 +7,8 @@ DB_PATH="FlightSystem.db"
 sqlite3 $DB_PATH <<EOF
 .read frs_create_tables.sql
 
-# Set output mode for .import (list format)
 .mode list
 
-# Importing CSV files into corresponding tables
 .import csv/Currencies.csv Currencies
 .import csv/Countries.csv Countries
 .import csv/Cities.csv Cities

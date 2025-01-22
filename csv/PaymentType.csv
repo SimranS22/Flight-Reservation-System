@@ -1,6 +1,6 @@
-pm_id,pm_type
-1,Credit Card
-2,Debit Card
-3,PayPal
-4,Apple Pay
-5,Google Pay
+pm_id|pm_type
+1|Credit Card
+2|Debit Card
+3|PayPal
+4|Apple Pay
+5|Google Pay
