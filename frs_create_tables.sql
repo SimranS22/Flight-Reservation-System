@@ -1,9 +1,11 @@
+-- 1. Countries
 CREATE TABLE Countries(
     country_id INTEGER PRIMARY KEY AUTOINCREMENT,
     country_name TEXT NOT NULL UNIQUE,
-    p_country_code TEXT NOT NULL UNIQUE
+    p_country_code TEXT NOT NULL UNIQUE --Phone code like +91, +1,etc.
 );
 
+-- 2. Cities
 CREATE TABLE Cities(
     city_id INTEGER PRIMARY KEY AUTOINCREMENT,
     city_name TEXT NOT NULL UNIQUE,
@@ -11,6 +13,7 @@ CREATE TABLE Cities(
     FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
+-- 3. Airlines
 CREATE TABLE Airlines(
     airline_id INTEGER PRIMARY KEY AUTOINCREMENT,
     airline_name TEXT NOT NULL,
@@ -21,19 +24,19 @@ CREATE TABLE Airlines(
     website TEXT NULL
 );
 
--- Credit Card, Debit Card, Net Banking, UPI, etc.
-CREATE TABLE PaymentType(
-    pm_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    pm_type TEXT NOT NULL
-);
-
--- Economy, Business, First, etc.
+-- 4. ClassType
 CREATE TABLE ClassType(
     class_id INTEGER PRIMARY KEY AUTOINCREMENT,
     class_name TEXT
 );
 
--- Aadhar Card (India), Driver’s License (USA), National Identity Card(EU), National ID Card(UK), CPF(Brazil) 
+-- 5. PaymentType
+CREATE TABLE PaymentType(
+    pm_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pm_type TEXT NOT NULL
+);
+
+-- 6. PII
 CREATE TABLE PII(
     identifier_id INTEGER PRIMARY KEY AUTOINCREMENT,
     identifier_type TEXT NOT NULL,
@@ -41,6 +44,7 @@ CREATE TABLE PII(
     FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
+-- 7. Airports
 CREATE TABLE Airports(
     airport_id INTEGER PRIMARY KEY AUTOINCREMENT,
     airport_name TEXT NOT NULL,
@@ -51,6 +55,7 @@ CREATE TABLE Airports(
     FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
+-- 8. Passengers
 CREATE TABLE Passengers(
     passenger_id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT NOT NULL,
@@ -64,6 +69,7 @@ CREATE TABLE Passengers(
     FOREIGN KEY (identifier_id) REFERENCES PII(identifier_id)
 );
 
+-- 9. Flights
 CREATE TABLE Flights(
     flight_id INTEGER PRIMARY KEY AUTOINCREMENT,
     flight_number INTEGER NOT NULL,
@@ -71,14 +77,14 @@ CREATE TABLE Flights(
     arrival_airport_id INTEGER,
     departure_time TEXT NOT NULL,
     arrival_time TEXT NOT NULL,
-    flight_status TEXT CHECK(flight_status IN ('Scheduled', 'Delayed', 'Cancelled')),
+    flight_status TEXT CHECK(flight_status IN ('Scheduled', 'Delayed', 'Cancelled', 'Completed')),
     airline_id INTEGER,
     FOREIGN KEY (departure_airport_id) REFERENCES Airports(airport_id),
     FOREIGN KEY (arrival_airport_id) REFERENCES Airports(airport_id),
     FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id)
 );
 
-
+-- 10. Bookings
 CREATE TABLE Bookings(
     booking_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_creator_id INTEGER NOT NULL, 
@@ -91,6 +97,7 @@ CREATE TABLE Bookings(
     FOREIGN KEY (ticket_type) REFERENCES ClassType(class_id)
 );
 
+-- 11. FamilyMembers
 CREATE TABLE FamilyMembers(
     family_member_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER, 
@@ -99,6 +106,7 @@ CREATE TABLE FamilyMembers(
     FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id)
 );
 
+-- 12. TicketSeats
 CREATE TABLE TicketSeats(
     ticket_seat_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER,
@@ -109,7 +117,7 @@ CREATE TABLE TicketSeats(
     FOREIGN KEY (seat_type) REFERENCES ClassType(class_id)
 );
 
-
+-- 13. Payments
 CREATE TABLE Payments(
     payment_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER, 
@@ -121,6 +129,7 @@ CREATE TABLE Payments(
     FOREIGN KEY (pm_id) REFERENCES PaymentType(pm_id)
 );
 
+-- 14. Baggage
 CREATE TABLE Baggage (
     baggage_id INTEGER PRIMARY KEY AUTOINCREMENT,         
     booking_id INTEGER,                                   
@@ -130,3 +139,24 @@ CREATE TABLE Baggage (
     baggage_status TEXT,                                  
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id)
 );
+
+-- 15. FlightBoarding
+CREATE TABLE FlightBoarding (
+    flight_id INTEGER,
+    passenger_id INTEGER,
+    boarded BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (flight_id) REFERENCES Flights(flight_id),
+    FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id),
+    PRIMARY KEY (flight_id, passenger_id)
+);
+
+-- 16. AirlineCrew
+CREATE TABLE AirlineCrew (
+    crew_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    airline_id INTEGER,
+    crew_role TEXT,
+    first_name TEXT,
+    last_name TEXT,
+    FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id)
+);
+
