@@ -1,0 +1,11 @@
+airport_id,airport_name,city_id,country_id,airport_code
+1,John F. Kennedy International Airport,1,1,JFK
+2,Los Angeles International Airport,2,1,LAX
+3,Chicago O'Hare International Airport,3,1,ORD
+4,Chhatrapati Shivaji Maharaj International Airport,4,2,BOM
+5,Indira Gandhi International Airport,5,2,DEL
+6,Kempegowda International Airport,6,2,BLR
+7,Heathrow Airport,7,3,LHR
+8,Manchester Airport,8,3,MAN
+9,Sydney Kingsford Smith Airport,9,4,SYD
+10,Melbourne Airport,10,4,MEL

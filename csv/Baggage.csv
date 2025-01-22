@@ -1,0 +1,11 @@
+baggage_id,booking_id,baggage_weight,baggage_type,checked_in,baggage_status
+1,1,15.0,1,TRUE,Checked
+2,2,20.0,2,FALSE,Checked
+3,3,10.0,3,TRUE,Not Checked
+4,4,25.0,4,FALSE,Checked
+5,5,30.0,5,TRUE,Checked
+6,6,18.0,1,FALSE,Not Checked
+7,7,22.0,2,TRUE,Checked
+8,8,35.0,3,FALSE,Checked
+9,9,40.0,4,TRUE,Checked
+10,10,16.0,5,FALSE,Checked
