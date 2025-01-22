@@ -130,15 +130,9 @@ INSERT INTO PaymentType (pm_type) VALUES
 -- Recheck class types
 INSERT INTO ClassType (class_name) VALUES
 ('Economy'),
-('Business'),
-('First'),
 ('Premium Economy'),
-('Economy Plus'),
-('Business Suite'),
-('First Suite'),
-('Executive Class'),
-('Luxury Class'),
-('Economy Lite');
+('Business'),
+('First');
 
 -- Will add country code here
 INSERT INTO PII (identifier_type) VALUES
