@@ -136,8 +136,8 @@ INSERT INTO ClassType (class_name) VALUES
 
 -- Will add country code here
 INSERT INTO PII (identifier_type) VALUES
-('Aadhar Card'),
-('Driver’s License'),
+('Aadhaar Card', 1),
+('Driver’s License',2),
 ('National Identity Card (EU)'),
 ('National ID Card (UK)'),
 ('CPF (Brazil)'),
