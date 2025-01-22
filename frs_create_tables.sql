@@ -1,47 +1,21 @@
+-- 20.Currencies
+CREATE TABLE Currencies (
+    currency_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    currency_code TEXT NOT NULL UNIQUE,
+    currency_name TEXT NOT NULL
+);
+
 -- 1. Countries
 CREATE TABLE Countries(
     country_id INTEGER PRIMARY KEY AUTOINCREMENT,
     country_name TEXT NOT NULL UNIQUE,
-    p_country_code TEXT NOT NULL UNIQUE --Phone code like +91, +1,etc.
+    phone_country_code TEXT NOT NULL UNIQUE
 );
 
 -- 2. Cities
 CREATE TABLE Cities(
     city_id INTEGER PRIMARY KEY AUTOINCREMENT,
     city_name TEXT NOT NULL UNIQUE,
-    country_id INTEGER,
-    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
-);
-
--- 3. Airlines
-CREATE TABLE Airlines(
-    airline_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    airline_name TEXT NOT NULL,
-    airline_code TEXT NOT NULL UNIQUE,
-    p_country_code TEXT NOT NULL UNIQUE,
-    contact_number TEXT NULL,
-    email TEXT NULL,
-    website TEXT NULL,
-    country_id INTEGER,
-    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
-);
-
--- 4. ClassType
-CREATE TABLE ClassType(
-    class_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    class_name TEXT
-);
-
--- 5. PaymentType
-CREATE TABLE PaymentType(
-    pm_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    pm_type TEXT NOT NULL
-);
-
--- 6. PII
-CREATE TABLE PII(
-    identifier_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    identifier_type TEXT NOT NULL,
     country_id INTEGER,
     FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
@@ -57,6 +31,51 @@ CREATE TABLE Airports(
     FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
+-- 4. ClassType
+CREATE TABLE ClassType(
+    class_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    class_name TEXT
+);
+
+-- 5. PaymentType
+CREATE TABLE PaymentType(
+    pm_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pm_type TEXT NOT NULL
+);
+
+-- 19. BaggageType
+CREATE TABLE BaggageType (
+    baggage_type_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    baggage_type_name TEXT NOT NULL
+);
+
+-- 17. CrewRoles
+CREATE TABLE CrewRoles (
+    role_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_name TEXT UNIQUE NOT NULL
+);
+
+-- 3. Airlines
+CREATE TABLE Airlines(
+    airline_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    airline_name TEXT NOT NULL,
+    airline_code TEXT NOT NULL UNIQUE,
+    phone_country_code TEXT NOT NULL UNIQUE,
+    contact_number TEXT NULL,
+    email TEXT NULL,
+    website TEXT NULL,
+    country_id INTEGER,
+    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
+);
+
+-- 6. PII
+CREATE TABLE PII(
+    identifier_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    identifier_type TEXT NOT NULL,
+    country_id INTEGER,
+    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
+);
+
 -- 8. Passengers
 CREATE TABLE Passengers(
     passenger_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -64,9 +83,9 @@ CREATE TABLE Passengers(
     last_name TEXT NULL,
     dob DATE NOT NULL,    
     email TEXT NULL,
-    p_country_code TEXT NOT NULL,
+    phone_country_code TEXT NOT NULL,
     phone_number TEXT NOT NULL,
-    identifier_id INTEGER,
+    identifier_id INTEGER NOT NULL,
     FOREIGN KEY (identifier_id) REFERENCES PII(identifier_id)
 );
 
@@ -99,7 +118,6 @@ CREATE TABLE Bookings(
     FOREIGN KEY (ticket_type) REFERENCES ClassType(class_id),
     FOREIGN KEY (currency) REFERENCES Currencies(currency_id)
 );
-
 
 -- 11. FamilyMembers
 CREATE TABLE FamilyMembers(
@@ -165,17 +183,11 @@ CREATE TABLE AirlineCrew (
     birthdate DATE,
     hire_date DATE,
     gender TEXT,
-    p_country_code TEXT NOT NULL,
+    phone_country_code TEXT NOT NULL,
     contact_phone TEXT,
-    email TEXT UNIQUE NULL,
+    email TEXT NULL,
     FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id) ON DELETE CASCADE,
     FOREIGN KEY (crew_role_id) REFERENCES CrewRoles(role_id)
-);
-
---  17. CrewRoles
-CREATE TABLE CrewRoles (
-    role_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    role_name TEXT UNIQUE NOT NULL
 );
 
 -- 18. CrewFlightBoarding
@@ -187,19 +199,3 @@ CREATE TABLE CrewFlightBoarding (
     FOREIGN KEY (crew_id) REFERENCES AirlineCrew(crew_id),
     PRIMARY KEY (flight_id, crew_id)
 );
-
--- 19. BaggageType
-CREATE TABLE BaggageType (
-    baggage_type_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    baggage_type_name TEXT NOT NULL
-);
-
---  20.Currencies
-CREATE TABLE Currencies (
-    currency_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    currency_code TEXT NOT NULL UNIQUE,
-    currency_name TEXT NOT NULL
-);
-
-
-
