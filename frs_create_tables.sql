@@ -164,7 +164,7 @@ CREATE TABLE Baggage (
     FOREIGN KEY (baggage_type) REFERENCES BaggageType(baggage_type_id)
 );
 
--- 15. FlightBoarding
+-- 15. PassengerFlightBoarding
 CREATE TABLE PassengerFlightBoarding (
     flight_id INTEGER,
     passenger_id INTEGER,
