@@ -1,10 +1,25 @@
-1|1|15.0|1|TRUE|Checked
-2|2|20.0|2|FALSE|Checked
-3|3|10.0|3|TRUE|Not Checked
-4|4|25.0|4|FALSE|Checked
-5|5|30.0|5|TRUE|Checked
-6|6|18.0|1|FALSE|Not Checked
-7|7|22.0|2|TRUE|Checked
-8|8|35.0|3|FALSE|Checked
-9|9|40.0|4|TRUE|Checked
-10|10|16.0|5|FALSE|Checked
+1|1|10.0|1|TRUE|Checked
+2|1|20.0|2|TRUE|Checked
+3|2|15.0|1|TRUE|Checked
+4|3|12.0|1|FALSE|In Transit
+5|4|25.0|2|TRUE|Checked
+6|5|8.0|1|TRUE|Checked
+7|6|18.0|1|FALSE|In Transit
+8|7|22.0|2|TRUE|Checked
+9|8|10.0|3|TRUE|Checked
+10|9|5.0|1|TRUE|Checked
+11|10|30.0|2|TRUE|Checked
+12|11|12.0|1|TRUE|Checked
+13|12|17.0|2|TRUE|Checked
+14|13|15.0|1|FALSE|In Transit
+15|14|13.0|1|TRUE|Checked
+16|15|20.0|2|TRUE|Checked
+17|16|7.0|1|TRUE|Checked
+18|17|25.0|1|TRUE|Checked
+19|18|22.0|3|TRUE|Checked
+20|19|28.0|2|TRUE|Checked
+21|20|10.0|1|TRUE|Checked
+22|21|5.0|1|FALSE|In Transit
+23|22|30.0|2|TRUE|Checked
+24|23|18.0|1|TRUE|Checked
+25|24|23.0|1|TRUE|Checked

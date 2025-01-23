@@ -13,7 +13,7 @@ SELECT * FROM Airports WHERE country_id = 1;
 
 -- 3. Get the details of passengers who have an email ending with "@example.com"
 
-SELECT * FROM Passengers WHERE email LIKE '%@example.com';
+SELECT * FROM Passengers WHERE email LIKE '%@email.com';
 
 
 -- 4. How many different payment methods are available in the database?
@@ -31,12 +31,11 @@ SELECT * FROM Flights WHERE DATE(departure_time) = '2025-02-01';
 SELECT * FROM Payments WHERE payment_status = 'Success' ;
 
 
--- 7. Get the list of all passengers who were born after 1990
+-- 7. Get the list of all passengers who were born after 1992
 
-SELECT * FROM Passengers WHERE dob >= '1990-01-01';
+SELECT * FROM Passengers WHERE dob >= '1992-01-01';
 
 -- 8. Get the total amount spent for booking_id = 1
-
 
 SELECT SUM(payment_amount) AS "Total Amount" FROM Payments WHERE booking_id = 1;
 

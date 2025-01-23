@@ -1,4 +1,4 @@
--- 20.Currencies
+-- 20. Currencies
 CREATE TABLE Currencies (
     currency_id INTEGER PRIMARY KEY AUTOINCREMENT,
     currency_code TEXT NOT NULL UNIQUE,
@@ -96,8 +96,8 @@ CREATE TABLE Flights(
     flight_number TEXT NOT NULL,
     departure_airport_id INTEGER,
     arrival_airport_id INTEGER,
-    departure_time TEXT NOT NULL,
-    arrival_time TEXT NOT NULL,
+    departure_time DATETIME NOT NULL,
+    arrival_time DATETIME NOT NULL,
     flight_status TEXT CHECK(flight_status IN ('Scheduled', 'Delayed', 'Cancelled', 'Completed')),
     airline_id INTEGER,
     FOREIGN KEY (departure_airport_id) REFERENCES Airports(airport_id),
@@ -109,15 +109,17 @@ CREATE TABLE Flights(
 CREATE TABLE Bookings(
     booking_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_creator_id INTEGER NOT NULL, 
-    booking_date TEXT NOT NULL, 
+    booking_date DATETIME NOT NULL,
     ticket_type INTEGER NOT NULL, 
     total_amount REAL NOT NULL, 
     currency INTEGER DEFAULT 1,
-    booking_status TEXT CHECK(booking_status IN ('Active', 'Cancelled', 'Completed', 'Pending')) NOT NULL,
-    cancellation_date TEXT NULL,
+    booking_status TEXT CHECK(booking_status IN ('Active', 'Cancelled')) NOT NULL,
+    cancellation_date DATETIME NULL,
+    flight_id INTEGER,
     FOREIGN KEY (booking_creator_id) REFERENCES Passengers(passenger_id) ON DELETE CASCADE,
     FOREIGN KEY (ticket_type) REFERENCES ClassType(class_id),
-    FOREIGN KEY (currency) REFERENCES Currencies(currency_id)
+    FOREIGN KEY (currency) REFERENCES Currencies(currency_id),
+    FOREIGN KEY (flight_id) REFERENCES Flights(flight_id) 
 );
 
 -- 11. FamilyMembers
@@ -125,6 +127,7 @@ CREATE TABLE FamilyMembers(
     family_member_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER, 
     passenger_id INTEGER, 
+    relation TEXT NOT NULL, 
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id) ON DELETE CASCADE,
     FOREIGN KEY (passenger_id) REFERENCES Passengers(passenger_id)
 );
@@ -135,7 +138,7 @@ CREATE TABLE TicketSeats (
     booking_id INTEGER,
     seat_number TEXT, 
     class_id INTEGER,
-    price REAL,
+    price DECIMAL(10, 2),
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
     FOREIGN KEY (class_id) REFERENCES ClassType(class_id)
 );
@@ -145,9 +148,9 @@ CREATE TABLE Payments(
     payment_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     booking_id INTEGER, 
     payment_date TEXT NOT NULL, 
-    payment_amount REAL, 
+    payment_amount DECIMAL(10, 2),
     pm_id INTEGER, 
-    payment_status TEXT CHECK(payment_status IN ('Success', 'Failed')) DEFAULT 'Pending',
+    payment_status TEXT CHECK(payment_status IN ('Pending', 'Success', 'Failed', 'Refunded')) DEFAULT 'Pending',
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
     FOREIGN KEY (pm_id) REFERENCES PaymentType(pm_id)
 );
@@ -156,10 +159,10 @@ CREATE TABLE Payments(
 CREATE TABLE Baggage (
     baggage_id INTEGER PRIMARY KEY AUTOINCREMENT,         
     booking_id INTEGER,                                   
-    baggage_weight REAL,                                  
+    baggage_weight REAL CHECK(baggage_weight > 0),                                  
     baggage_type INTEGER,                                  
     checked_in BOOLEAN,                                    
-    baggage_status TEXT,                                  
+    baggage_status TEXT CHECK(baggage_status IN ('Checked', 'Lost', 'In Transit', 'Delivered')),
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
     FOREIGN KEY (baggage_type) REFERENCES BaggageType(baggage_type_id)
 );
@@ -181,12 +184,12 @@ CREATE TABLE AirlineCrew (
     crew_role_id INTEGER,
     first_name TEXT,
     last_name TEXT,
-    birthdate DATE,
     hire_date DATE,
     gender TEXT,
+    dob DATE,
+    email TEXT NULL,
     phone_country_code TEXT NOT NULL,
     contact_phone TEXT,
-    email TEXT NULL,
     FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id) ON DELETE CASCADE,
     FOREIGN KEY (crew_role_id) REFERENCES CrewRoles(role_id)
 );
