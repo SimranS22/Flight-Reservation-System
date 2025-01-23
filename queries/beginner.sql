@@ -1,5 +1,6 @@
 -- SQLite: Beginner Level
 
+
 -- 1.List all the airlines in the database.
 SELECT * FROM Airlines;
 
@@ -37,8 +38,10 @@ SELECT * FROM Passengers WHERE dob >= '1992-01-01';
 
 -- 8. Get the total amount spent for booking_id = 1
 
+-- Query 1
 SELECT SUM(payment_amount) AS "Total Amount" FROM Payments WHERE booking_id = 1;
 
+-- Query 2
 SELECT total_amount AS "Total Amount" FROM Bookings WHERE booking_id = 1;
 
 

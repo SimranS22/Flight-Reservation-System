@@ -1,5 +1,6 @@
 -- SQLite: Intermediate Level
 
+
 -- 1. Find all flights that have been delayed.
 
 SELECT * FROM Flights WHERE flight_status = 'Delayed';
@@ -82,6 +83,7 @@ SELECT * FROM Countries;
 SELECT f.* FROM Flights f
 INNER JOIN Airports a ON f.arrival_airport_id = a.airport_id 
 WHERE a.country_id = 3;
+
 
 -- 11. List the top 5 passengers with the highest total payment amount.
 

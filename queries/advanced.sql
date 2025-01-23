@@ -20,15 +20,29 @@ ORDER BY SUM(py.payment_amount) DESC
 LIMIT 1;
 
 
--- 3. Find those Bookings which have been cancelled however the payment has not been Refunded
+-- 3. Find the bookings that were cancelled but for which the money was not refunded.
 
 SELECT * FROM Bookings bk 
 INNER JOIN Payments py ON bk.booking_id = py.booking_id
 WHERE bk.booking_status ='Cancelled' AND py.payment_status != 'Refunded';
 
+
+-- All cancelled bookings should be refunded.
+-- 4. Update the status to refunded for cancelled bookings.
+
+UPDATE Payments
+SET payment_status = 'Refunded'
+WHERE payment_id = 21;
+
+-- 5. Calculate the total number of passengers per country partitioned by gender
+
+SELECT c.country_name, p.gender, COUNT(*) AS "No. of Passengers" FROM Passengers p
+INNER JOIN Countries c ON p.phone_country_code = c.phone_country_code
+GROUP BY c.country_name, p.gender
+ORDER BY c.country_name, p.gender ASC;
+
 /*
-Currently Payment Amount [payment_amount(Payments)] tracks the Total Amount [total_amount(Bookings)] only, which covers the seat prices only.
+Payment Amount [payment_amount(Payments)] now only keeps track of the Total Amount [total_amount(Bookings)], which only accounts for seat pricing.
 
-Now the Total Amount must contain the baggage prices of the passengers as well
-
+The passengers' baggage costs must now be included in the total amount.
 */
