@@ -31,3 +31,38 @@ WHERE p.payment_status = 'Failed';
 SELECT CONCAT(pg.first_name, ' ', pg.last_name) AS "Passengers"  FROM PassengerFlightBoarding pfb 
 INNER JOIN Passengers pg ON pfb.passenger_id = pg.passenger_id
 WHERE pfb.flight_id = 1;
+
+-- 6. List the airports in each country, sorted by country_id
+
+SELECT c.country_name, ap.airport_name FROM Airports ap
+INNER JOIN Countries c ON ap.country_id = c.country_id
+ORDER BY c.country_id;
+
+-- 7. Get the average price of seats in booking_id = 10
+
+SELECT AVG(price) FROM TicketSeats WHERE booking_id = 10
+
+-- 8. Get the details of the top 3 most expensive bookings based on seat prices
+
+SELECT * FROM TicketSeats
+GROUP BY booking_id
+ORDER BY price DESC
+LIMIT 3;
+
+-- 9. Find all the passengers who have not boarded a flight
+
+SELECT 
+    p.passenger_id, 
+    p.first_name || ' ' || p.last_name AS "Passengers"
+FROM PassengerFlightBoarding AS pfb 
+JOIN Passengers AS p ON pfb.passenger_id = p.passenger_id
+WHERE pfb.boarded = 'FALSE';
+
+-- 9. Retrieve all flights where the arrival airport is in the United Kingdom
+
+SELECT * FROM Countries;
+
+--country_id = 3
+SELECT f.* FROM Flights f
+INNER JOIN Airports a ON f.arrival_airport_id = a.airport_id 
+WHERE a.country_id = 3;
